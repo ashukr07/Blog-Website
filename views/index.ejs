@@ -1,0 +1,52 @@
+<%- include("partials/header.ejs") %>
+<div class="container d-flex flex-wrap">
+  <% if (blogs.length>0) { %> <% blogs.forEach(blog=>{ %>
+
+  <div class="d-flex flex-wrap-reverse">
+    <div class="card m-2" style="width: 18rem">
+     <!-- <img src="" class="card-img-top" alt="..." />  -->
+      <div class="card-body">
+        <h5 class="card-title"><%=blog.title %></h5>
+        <p class="card-text"><%= blog.author %></p>
+        <div class="d-flex flex-column">
+          <form action="/detail" method="post" class="mb-1">
+            <input type="hidden" name="detailItemId" value="<%= blog.id %>" />
+            <button
+              type="submit"
+              id="detail<%=blog.id %>"
+              class="btn btn-success"
+            >  
+              Read More
+            </button>
+          </form>
+          <form action="/edit" method="post" class="mb-1">
+            <input type="hidden" name="editItemId" value="<%= blog.id %>" />
+            <button
+              type="submit"
+              id="edit<%=blog.id %>"
+              class="btn btn-warning"
+            >
+              Edit
+            </button>
+          </form>
+          <form action="/delete" method="post" class="mb-1">
+            <input type="hidden" name="deleteItemId" value="<%= blog.id %>" />
+            <button
+              type="submit"
+              id="delete<%=blog.id %>"
+              class="btn btn-danger"
+            >
+              Delete
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <% })} else{%>
+    <h1>Click on Add to create your own blogpost</h1>
+    <% } %>
+
+</div>
+
+<%- include("partials/footer.ejs") %>

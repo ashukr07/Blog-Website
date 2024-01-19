@@ -1,0 +1,62 @@
+<%- include("partials/header.ejs") %>
+  
+<div class="container mb-5">
+  <form action="/submit" method="post" >
+    <input type="hidden" name="request" value="<%= locals.item?item.id:'new' %>" />
+    <div class="mb-3">
+      <label for="blog" class="form-label">Title of your blog</label>
+      <input type="text" class="form-control" id="blog" name="title" value="<%=locals.item?item.title:'' %>" required/>
+    </div>
+    <div class="mb-3">
+      <label for="blogInfo" class="form-label">Blog Information</label>
+      <textarea
+        id="blogInfo"
+        name="info"
+        class="form-control"
+        rows="10"
+        required
+      ><%=locals.item?item.information:'' %></textarea>
+    </div>
+    <div class="mb-3">
+      <label for="author" class="form-label">Author of your blog</label>
+      <input
+        type="text"
+        class="form-control"
+        id="author"
+        name="author"
+        value="<%=locals.item?item.author:'' %>"
+        required
+      />
+    </div>
+    <div class="mb-3">
+      <label for="type" class="form-label">Type of your blog </label>
+      <select
+        class="form-select"
+        aria-label="Default select example"
+        name="type"
+        id="type"
+        value="<%=locals.item?item.type:'' %>"
+        required
+      >
+        <option selected>Open this select menu</option>
+        <option value="business" <%= locals.item? (item.type=="business"?'selected':''):'' %>>Business Blog</option>
+        <option value="food" <%= locals.item? (item.type=="food"?'selected':''):'' %>>Food Blog</option>
+        <option value="personal" <%= locals.item? (item.type=="personal"?'selected':''):'' %>>Personal Blog</option>
+        <option value="travel" <%= locals.item? (item.type=="travel"?'selected':''):'' %>>Travel Blog</option>
+        <option value="finanace" <%= locals.item? (item.type=="finance"?'selected':''):'' %>>Finanace Blog</option>
+        <option value="news" <%= locals.item? (item.type=="news"?'selected':''):'' %>>News Blog</option>
+        <option value="political" <%= locals.item? (item.type=="political"?'selected':''):'' %>>Political Blog</option>
+        <option value="technical" <%= locals.item? (item.type=="technical"?'selected':''):'' %>>Technical Blog</option>
+        <option value="education"<%= locals.item? (item.type=="education"?'selected':''):'' %>>Education Blog</option>
+        <option value="sports" <%= locals.item? (item.type=="sports"?'selected':''):'' %>>Sports Blog</option>
+      </select>
+    </div>
+    <div class="input-group mb-3">
+      <label class="input-group-text" for="image">Upload</label>
+      <input type="file" class="form-control" id="image" name="images" />
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+</div>
+
+<%- include("partials/footer.ejs") %>

@@ -1,0 +1,13 @@
+<%-include("partials/header.ejs") %>
+<div class="container m-5 ">
+    <h1 class="display-5 link-body-emphasis mb-3 "><%= item.title %></h2>
+        <hr class="border border-primary border-3 opacity-75">
+    <p class="fs-2 mb-3 ">
+        <%= item.information %>
+    </p> 
+    <hr class="border border-primary border-3 opacity-75">
+    <h3 class="mb-3">Type of blog : <%= item.type %></h3>
+    <hr class="border border-primary border-3 opacity-75">
+    <h3 class="mb-3">Written by : <%= item.author%></h3>
+</div>
+<%-include("partials/footer.ejs") %>
